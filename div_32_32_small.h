@@ -108,7 +108,7 @@ static inline uint32_t div_32_32_small (uint32_t n, uint32_t d)
         "    subi %[ctr],-32\n"
         "    brne loop3_%=\n"
         
-        : [q] "=&a" (q),
+        : [q] "=&r" (q),
           [n] "=&r" (n),
           [ctr] "=&a" (ctr)
         : "[n]" (n),
