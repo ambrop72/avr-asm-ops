@@ -89,9 +89,13 @@
 
 static inline uint32_t div_32_32_large (uint32_t n, uint32_t d)
 {
-    uint32_t q = 0;
+    uint32_t q;
     
     asm(
+        "    clr %A[q]\n"
+        "    clr %B[q]\n"
+        "    clr %C[q]\n"
+        "    clr %D[q]\n"
         "    clr __tmp_reg__\n"
         DIVIDE_32_32_ITER_0_7(0)
         DIVIDE_32_32_ITER_0_7(1)
@@ -136,10 +140,9 @@ static inline uint32_t div_32_32_large (uint32_t n, uint32_t d)
         "    sbci %A[q],-1\n"
         
         : [q] "=&a" (q),
-            [n] "=&r" (n)
-        : "[q]" (q),
-            "[n]" (n),
-            [d] "r" (d)
+          [n] "=&r" (n)
+        : "[n]" (n),
+          [d] "r" (d)
     );
     
     return q;
