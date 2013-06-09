@@ -27,6 +27,12 @@
 
 #include <stdint.h>
 
+/**
+ * Division uint32_t/uint32_t.
+ * 
+ * Cycles in worst case: 510
+ * = 2 + (8 * 13 - 1) + (8 * 15 - 1) + (8 * 17 - 1) + (8 * 19 - 1)
+ */
 static inline uint32_t div_32_32_small (uint32_t n, uint32_t d)
 {
     uint32_t q;

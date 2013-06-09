@@ -82,6 +82,12 @@
 "    ori %A[q],1<<(31-" #i ")\n" \
 "zero_bit_" #i "__%=:\n"
 
+/**
+ * Division uint32_t/uint16_t.
+ * 
+ * Cycles in worst case: 344
+ * = 5 + (8 * 7) + (8 * 9) + (8 * 12) + (7 * 15) + 10
+ */
 static inline uint32_t div_32_16_large (uint32_t n, uint16_t d)
 {
     uint32_t q;
