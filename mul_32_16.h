@@ -73,7 +73,7 @@ static inline void mul_32_16 (uint32_t op1, uint16_t op2, uint32_t *low, uint16_
         "adc %A[resH],r1\n"
         "adc %B[resH],%[zero]\n"
         
-        "clr r0\n"
+        "clr __zero_reg__\n"
         
         : [resL] "=&r" (*low),
           [resH] "=&r" (*high),
